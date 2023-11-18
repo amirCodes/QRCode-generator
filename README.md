@@ -14,3 +14,8 @@ pnpm dev
 bun dev
 ```
 "# QRCode-generator" 
+
+
+https://hackernoon.com/a-guide-to-building-an-image-generator-with-react-and-openai 
+
+https://www.npmjs.com/package/qrcode
