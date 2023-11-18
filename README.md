@@ -13,9 +13,6 @@ pnpm dev
 # or
 bun dev
 ```
-"# QRCode-generator" 
-
-
-https://hackernoon.com/a-guide-to-building-an-image-generator-with-react-and-openai 
+QRCode-generator is build with thirdparty lib, here you can read more about this library 
 
 https://www.npmjs.com/package/qrcode
