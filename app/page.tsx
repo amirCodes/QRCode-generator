@@ -1,27 +1,24 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React, {useState } from "react";
 import Image from "next/image";
 import QRCode from "qrcode";
-import SVG from "react-inlinesvg";
-import axios from "axios";
 import { saveAs } from "file-saver";
 import { Footer } from "./components/Footer";
 export default function Home() {
   const [url, setUrl] = useState("https://amircodes.github.io/codes");
   const [qrcode, setQrcode] = useState("./next.svg");
   const [bgColor, setBGColor] = useState("#FFFFFF");
-
   const [qrcodeColor, setQrcodeColor] = useState("#000");
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
  
   const downloadQrcode = () => {
-    saveAs(qrcode, "QR Code.jpg"); // Put your image URL here.
+    saveAs(qrcode, "QR Code.jpg"); 
   };
 
   const generateQR = async (e: any) => {
+    // options and setting for the QR code 
     var opts = {
       errorCorrectionLevel: "H",
       type: "image/jpeg",
@@ -48,7 +45,7 @@ export default function Home() {
       setIsLoading(false);
     }
   };
-
+// Generate the QRCode afeter submit or clicking generate QR code button
   const handleSubmit = (e:any) => {
     e.preventDefault();
     generateQR(url);
