@@ -5,8 +5,8 @@ import QRCode from "qrcode";
 import { saveAs } from "file-saver";
 import { Footer } from "./components/Footer";
 export default function Home() {
-  const [url, setUrl] = useState("https://amircodes.github.io/codes");
-  const [qrcode, setQrcode] = useState("./next.svg");
+  const [url, setUrl] = useState<any >("https://amircodes.github.io/codes");
+  const [qrcode, setQrcode] = useState<any>("./next.svg");
   const [bgColor, setBGColor] = useState("#FFFFFF");
   const [qrcodeColor, setQrcodeColor] = useState("#000");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -36,7 +36,7 @@ export default function Home() {
       const dataUrl = await QRCode.toDataURL(url, opts);
       // const result = await response.text();
       setQrcode(dataUrl);
-      console.log(dataUrl);
+      // console.log(dataUrl);
     } catch (error) {
       // Capture the error message to display to the user
       setError(error.message);
