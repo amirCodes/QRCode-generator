@@ -1,4 +1,9 @@
-This is a QR Code generator app using [Next.js] 14, bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+Here is the live demo and ready to use link
+
+# https://gettheqrcode.netlify.app
+
+## You can generate QR code of your website, any single post on social media[Just copy then past the link of that post] and other website which is accessible. 
 
 ## Getting Started
 
@@ -13,6 +18,9 @@ pnpm dev
 # or
 bun dev
 ```
-QRCode-generator is build with thirdparty lib, here you can read more about this library 
+This is a QR Code generator app using [Next.js] 14, bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
+QR Code-generator is build with third party lib, here you can read more about this library
 
 https://www.npmjs.com/package/qrcode
