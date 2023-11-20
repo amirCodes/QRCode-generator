@@ -1,16 +1,17 @@
 "use client";
-import React, {useState } from "react";
+import React, {ChangeEvent, useState } from "react";
 import Image from "next/image";
 import QRCode from "qrcode";
 import { saveAs } from "file-saver";
 import { Footer } from "./components/Footer";
+
 export default function Home() {
-  const [url, setUrl] = useState<any >("https://amircodes.github.io/codes");
+  const [url, setUrl] = useState<String | any>('https://amircodes.github.io/codes');
   const [qrcode, setQrcode] = useState<any>("./next.svg");
   const [bgColor, setBGColor] = useState("#FFFFFF");
   const [qrcodeColor, setQrcodeColor] = useState("#000");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<any>(null);
 
  
   const downloadQrcode = () => {
@@ -19,7 +20,7 @@ export default function Home() {
 
   const generateQR = async (e: any) => {
     // options and setting for the QR code 
-    var opts = {
+    var opts:any = {
       errorCorrectionLevel: "H",
       type: "image/jpeg",
       quality: 0.3,
@@ -39,8 +40,8 @@ export default function Home() {
       // console.log(dataUrl);
     } catch (error) {
       // Capture the error message to display to the user
-      setError(error.message);
-      console.error(error);
+      setError(error);
+      // console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -50,7 +51,7 @@ export default function Home() {
     e.preventDefault();
     generateQR(url);
   };
- 
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between ">
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-2 lg:text-left p-24">
@@ -72,7 +73,7 @@ export default function Home() {
               <div className="mt-1">
                 <input
                   value={url}
-                  onChange={(e) => setUrl(e.target.value)}
+                  onChange={(e:any) => setUrl(e.target.value)}
                   type="text"
                   name="url"
                   id="url"
@@ -89,7 +90,7 @@ export default function Home() {
                   name="favcolor"
                   className="ًrounded-lg caret-blue-500 focus:caret-indigo-500"
                   value={qrcodeColor}
-                  onChange={(e) => setQrcodeColor(e.target.value)}
+                  onChange={(e:any) => setQrcodeColor(e.target.value)}
                 />
                 Background Color
                 <input
@@ -98,7 +99,7 @@ export default function Home() {
                   name="favcolor"
                   className="ًrounded-lg caret-blue-500 focus:caret-indigo-500"
                   value={bgColor}
-                  onChange={(e) => setBGColor(e.target.value)}
+                  onChange={(e:any) => setBGColor(e.target.value)}
                 />
               </div>
             </div>
