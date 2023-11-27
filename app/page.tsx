@@ -1,9 +1,11 @@
 "use client";
-import React, {ChangeEvent, useState } from "react";
+
+import React, {ChangeEvent, useState, useEffect } from "react";
 import Image from "next/image";
 import QRCode from "qrcode";
 import { saveAs } from "file-saver";
 import { Footer } from "./components/Footer";
+const initialCounter = parseInt(localStorage.getItem('counter') ?? '0', 10);
 
 export default function Home() {
   const [url, setUrl] = useState<String | any>('https://amircodes.github.io/codes');
@@ -11,9 +13,13 @@ export default function Home() {
   const [bgColor, setBGColor] = useState("#FFFFFF");
   const [qrcodeColor, setQrcodeColor] = useState("#000");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<any>(null);
+  const [error, setError] = useState<any>(null); 
+  const [counter, setCounter] = useState(initialCounter);
 
- 
+   // Save the counter value to localStorage whenever it changes
+   useEffect(() => {
+    localStorage.setItem('counter', counter.toString());
+  }, [counter]);
   const downloadQrcode = () => {
     saveAs(qrcode, "QR Code.jpg"); 
   };
@@ -38,6 +44,8 @@ export default function Home() {
       // const result = await response.text();
       setQrcode(dataUrl);
       // console.log(dataUrl);
+      setCounter(counter + 1);
+
     } catch (error) {
       // Capture the error message to display to the user
       setError(error);
@@ -126,6 +134,7 @@ export default function Home() {
           <p className={`mb-2 w-full text-sm opacity-50`}>
             You may download and save the QR Code or regenerate another one
           </p>
+          <p className="mb-2 w-full text-sm opacity-50"> Number of QR Code been create:{counter} </p>
           <br />
 
           <Image
